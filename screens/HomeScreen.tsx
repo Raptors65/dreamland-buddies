@@ -10,6 +10,7 @@ import type {PropsWithChildren} from 'react';
 import {
   Button,
   Pressable,
+  RefreshControl,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -42,6 +43,15 @@ function HomeScreen({ navigation, dispatch, creatures }: Props): JSX.Element {
   const [sleepData, setSleepData] = useState<RecordResult<"SleepSession">[]>([]);
   const [minimumHours, setMinimumHours] = useState(7);
   const [maximumHours, setMaximumHours] = useState(9);
+  const [override, setOverride] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = () => {
+    setRefreshing(true);
+    readSleepData().then((data) => {
+      setSleepData(data);
+      setRefreshing(false);
+    });
+  };
 
   const updateMinimumHours = (newValue: number) => {
     setMinimumHours(newValue);
@@ -89,38 +99,46 @@ function HomeScreen({ navigation, dispatch, creatures }: Props): JSX.Element {
     streakColor = '#57C84D';
   }
 
+  const currentHour = (new Date()).getHours();
+
   return (
-    <View style={styles.scrollView}>
-      <View style={styles.sleepPointsContainer}>
-        <Text style={styles.snoozePointsTitle}>Snooze Points</Text>
-        <Text style={styles.sleepPoints}>{creatures.sleepPoints.toLocaleString()}</Text>
-      </View>
-      <View style={styles.streakContainer}>
-        <Text style={styles.streakTitle}>Current Streak</Text>
-        <Text style={{...styles.streak, color: streakColor }}>{streak.toLocaleString()}</Text>
-      </View>
-      <Pressable onPress={() => navigation.navigate('Buy Creatures')}>
-        <View style={styles.buyCreaturesView}>
-          <Text style={styles.buttonText}>Buy Creatures</Text>
-        </View>
-      </Pressable>
-      <Pressable onPress={() => navigation.navigate('Your Creatures')}>
-        <View style={styles.yourCreaturesView}>
-          <Text style={styles.buttonText}>Your Creatures</Text>
-        </View>
-      </Pressable>
-      <Pressable onPress={() => navigation.navigate('Achievements')}>
-        <View style={styles.achievementsView}>
-          <Text style={styles.buttonText}>Achievements</Text>
-        </View>
-      </Pressable>
-      <SleepGoal
-        minimumHours={minimumHours}
-        setMinimumHours={setMinimumHours}
-        maximumHours={maximumHours}
-        setMaximumHours={setMaximumHours}
-      />
-    </View>
+    <ScrollView style={styles.scrollView} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+      {!override ? (
+        <>
+          <View style={styles.sleepPointsContainer}>
+            <Text style={styles.snoozePointsTitle}>Snooze Points</Text>
+            <Text style={styles.sleepPoints}>{creatures.sleepPoints.toLocaleString()}</Text>
+          </View>
+          <View style={styles.streakContainer}>
+            <Text style={styles.streakTitle}>Current Streak</Text>
+            <Text style={{...styles.streak, color: streakColor }}>{streak.toLocaleString()}</Text>
+          </View>
+          <Pressable onPress={() => navigation.navigate('Buy Creatures')}>
+            <View style={styles.buyCreaturesView}>
+              <Text style={styles.buttonText}>Buy Creatures</Text>
+            </View>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Your Creatures')}>
+            <View style={styles.yourCreaturesView}>
+              <Text style={styles.buttonText}>Your Creatures</Text>
+            </View>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('Achievements')}>
+            <View style={styles.achievementsView}>
+              <Text style={styles.buttonText}>Achievements</Text>
+            </View>
+          </Pressable>
+          <SleepGoal
+            minimumHours={minimumHours}
+            setMinimumHours={setMinimumHours}
+            maximumHours={maximumHours}
+            setMaximumHours={setMaximumHours}
+          />
+        </>
+      ) : (
+        <Text>Hi</Text>
+      )}
+    </ScrollView>
   );
 }
 

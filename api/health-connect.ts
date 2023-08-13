@@ -15,7 +15,7 @@ export const readSleepData = async () => {
   const result = await readRecords('SleepSession', {
     timeRangeFilter: {
       operator: 'between',
-      startTime: '2023-08-10T16:00:00.000Z',
+      startTime: '2023-01-01T00:00:00.000Z',
       endTime: now.toISOString(),
     }
   });
