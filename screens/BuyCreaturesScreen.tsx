@@ -16,7 +16,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Buy Creatures'> & {
 function BuyCreaturesScreen({ creatures, dispatch, route }: Props): JSX.Element {
   return (
     <>
-      <Text style={styles.points}>Points: {creatures.sleepPoints}</Text>
+      <Text style={styles.points}>Snooze Points: {creatures.sleepPoints}</Text>
       <FlatList
         data={creatures.creatures}
         nestedScrollEnabled
