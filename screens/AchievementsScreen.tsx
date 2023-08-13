@@ -15,43 +15,43 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Achievements'> & {
 
 const achievements = [
   {
-    name: 'Dreamland Buddies',
-    description: 'Collect two common sleep creatures to prove you\'re building a cozy sleep environment.',
+    name: 'Cozy Friends',
+    description: 'Befriend two common sleep creatures. You\'re building a cozy sleep environment!',
     rarity: 'Common'
   },
   {
-    name: 'Snooze Companions',
-    description: 'Form a bond with a pair of uncommon sleep creatures and enjoy even more restful nights.',
+    name: 'Snoozing Companions',
+    description: 'Befriend two uncommon sleep creatures. Enjoy even more restful nights with your new sleepy friends.',
     rarity: 'Uncommon',
   },
   {
-    name: 'Rested Relations',
-    description: 'Forge a strong connection with two rare sleep creatures, enhancing your sleep quality.',
+    name: 'Bedtime Buddies',
+    description: 'Befriend two rare sleep creatures. Forge strong connections with them, enhancing your sleep quality.',
     rarity: 'Rare',
   },
   {
-    name: 'Dream Control Master',
-    description: 'Harness the power of two epic sleep creatures, showcasing your mastery over the dream realm.',
+    name: 'Dreamweaver',
+    description: 'Befriend two epic sleep creatures. Harness the power of two epic sleep creatures to weave sweet dreams.',
     rarity: 'Epic',
   },
   {
-    name: 'Legends of Slumber',
-    description: 'Unite two legendary sleep creatures, solidifying your status as a legend in the world of dreams.',
+    name: 'Siren of Slumber',
+    description: 'Befriend two legendary sleep creatures. Solidify your status as a legendary sleeper with these powerful creatures by your side.',
     rarity: 'Legendary'
   },
   {
-    name: 'Mythic Dreamweaver',
-    description: 'Attain a harmonious pair of mythic sleep creatures, elevating your dream experiences to the mythic realm.',
+    name: 'Mythic Realmwalker',
+    description: 'Befriend two mythic sleep creatures. Elevate your experiences as you travel through the dream realms.',
     rarity: 'Mythic'
   },
   {
     name: 'Divine Dream Guardians',
-    description: 'Prove your dedication by acquiring two divine sleep creatures, establishing an unbreakable dream bond.',
+    description: 'Befriend two divine sleep creatures. Prove your dedication to the art of slumber and establishing an unbreakable sleep streak with these creatures.',
     rarity: 'Divine',
   },
   {
-    name: 'Celestial Harmony',
-    description: 'Achieve perfect harmony with two celestial sleep creatures, reaching the highest echelons of dream mastery.',
+    name: 'Celestial Dreamer',
+    description: 'Befriend two celestial sleep creatures. Reach the highest echelons of dream mastery with the power of the ancient gods of sleep.',
     rarity: 'Celestial'
   },
 ];
