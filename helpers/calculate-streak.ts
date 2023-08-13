@@ -18,7 +18,7 @@ export default function calculateStreak(sleepData: RecordResult<"SleepSession">[
   }
 
   // TODO: remove (this is only for testing)
-//   streak += 2000
+  streak += 2000
 
   return streak;
 }
