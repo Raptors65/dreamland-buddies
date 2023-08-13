@@ -23,6 +23,7 @@ import { RootStackParamList } from './types/navigation-props';
 import BuyCreaturesScreen from './screens/BuyCreaturesScreen';
 import { Provider } from 'react-redux';
 import { store } from './lib/store';
+import YourCreaturesScreen from './screens/YourCreaturesScreen';
 
 function App(): JSX.Element {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -41,6 +42,7 @@ function App(): JSX.Element {
         <Stack.Navigator>
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Buy Creatures" component={BuyCreaturesScreen} />
+          <Stack.Screen name="Your Creatures" component={YourCreaturesScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

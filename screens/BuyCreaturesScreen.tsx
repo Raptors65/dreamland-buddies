@@ -5,18 +5,18 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation-props';
 import { connect, useDispatch } from 'react-redux';
-import { buyCreature } from '../lib/creaturesReducer';
+import { CreaturesState, buyCreature } from '../lib/creaturesReducer';
 import { AppDispatch } from '../lib/store';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Buy Creatures'> & {
-  creatures: { creatures: Creature[] },
+  creatures: CreaturesState,
   dispatch: AppDispatch
 };
 
 function BuyCreaturesScreen({ creatures, dispatch, route }: Props): JSX.Element {
   return (
     <>
-      <Text style={styles.points}>Points: {route.params.sleepPoints}</Text>
+      <Text style={styles.points}>Points: {creatures.sleepPoints}</Text>
       <FlatList
         data={creatures.creatures}
         nestedScrollEnabled
@@ -33,7 +33,7 @@ function BuyCreaturesScreen({ creatures, dispatch, route }: Props): JSX.Element 
                 <Text style={styles.ownedInfo}>{item.owned ? 'Owned' : 'Not Owned'}</Text>
               </View>
             </View>
-            <Button disabled={item.owned} title="Buy Creature" onPress={() => dispatch(buyCreature(index))} />
+            {!item.owned && <Button disabled={item.cost > creatures.sleepPoints} title="Buy Creature" onPress={() => dispatch(buyCreature(index))} />}
           </View>
         )}
       />
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const BuyCreaturesScreenContainer = connect((creatures: Creature[], ownProps: NativeStackScreenProps<RootStackParamList, 'Buy Creatures'>) => ({ creatures, ...ownProps }))(BuyCreaturesScreen);
+const BuyCreaturesScreenContainer = connect((state: CreaturesState, ownProps: NativeStackScreenProps<RootStackParamList, 'Buy Creatures'>) =>
+  ({ ...state, ...ownProps }))(BuyCreaturesScreen);
 
 export default BuyCreaturesScreenContainer;

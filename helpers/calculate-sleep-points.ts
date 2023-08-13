@@ -1,6 +1,7 @@
 import type { RecordResult } from "react-native-health-connect/lib/typescript/types";
+import Creature from "../types/creature";
 
-export default function calculateSleepPoints(sleepData: RecordResult<"SleepSession">[], minimumHours: number, maximumHours: number) {
+export default function calculateSleepPoints(sleepData: RecordResult<"SleepSession">[], minimumHours: number, maximumHours: number, creatures: Creature[]) {
   let sleepPoints = 0;
   let streak = 0;
 
@@ -25,6 +26,15 @@ export default function calculateSleepPoints(sleepData: RecordResult<"SleepSessi
       streak = 0;
     }
   }
+
+  for (const creature of creatures) {
+    if (creature.owned) {
+      sleepPoints -= creature.cost;
+    }
+  }
+
+  // TODO: remove (this is only for testing)
+  sleepPoints += 10000000
 
   return sleepPoints;
 }

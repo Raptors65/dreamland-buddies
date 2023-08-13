@@ -3,7 +3,7 @@ type Creature = {
   rarity: 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary' | 'Mythic' | 'Divine' | 'Celestial';
   type: string;
   cost: number;
-  age: number;
+  born: number;
   owned: boolean;
 }
 
