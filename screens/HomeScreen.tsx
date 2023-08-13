@@ -82,12 +82,6 @@ function HomeScreen({ navigation, dispatch, creatures }: Props): JSX.Element {
         <Text style={styles.snoozePointsTitle}>Snooze Points</Text>
         <Text style={styles.sleepPoints}>{creatures.sleepPoints}</Text>
       </View>
-      <SleepGoal
-        minimumHours={minimumHours}
-        setMinimumHours={setMinimumHours}
-        maximumHours={maximumHours}
-        setMaximumHours={setMaximumHours}
-      />
       <Pressable onPress={() => navigation.navigate('Buy Creatures')}>
         <View style={styles.buyCreaturesView}>
           <Text style={styles.buttonText}>Buy Creatures</Text>
@@ -98,6 +92,12 @@ function HomeScreen({ navigation, dispatch, creatures }: Props): JSX.Element {
           <Text style={styles.buttonText}>Your Creatures</Text>
         </View>
       </Pressable>
+      <SleepGoal
+        minimumHours={minimumHours}
+        setMinimumHours={setMinimumHours}
+        maximumHours={maximumHours}
+        setMaximumHours={setMaximumHours}
+      />
     </View>
   );
 }
@@ -110,11 +110,13 @@ const styles = StyleSheet.create({
   },
   snoozePointsTitle: {
     color: '#FFFFFF',
-    fontSize: 30
+    fontSize: 30,
+    textAlign: 'center'
   },
   sleepPoints: {
     color: '#FFFFFF',
-    fontSize: 50
+    fontSize: 50,
+    textAlign: 'center'
   },
   buyCreaturesView: {
     backgroundColor: '#0055bb',
@@ -123,7 +125,8 @@ const styles = StyleSheet.create({
   },
   yourCreaturesView: {
     backgroundColor: '#0000bb',
-    padding: 10
+    padding: 10,
+    marginBottom: 30
   },
   buttonText: {
     color: '#FFFFFF',

@@ -11,7 +11,7 @@ type SleepGoalProps = {
 function SleepGoal({ minimumHours, setMinimumHours, maximumHours, setMaximumHours }: SleepGoalProps): JSX.Element {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Sleep Goal</Text>
+      <Text style={styles.title}>Modify Sleep Goal</Text>
       <View style={styles.goalContainer}>
         <View style={styles.hoursContainer}>
           <Text style={styles.hoursTitle}>Minimum Hours</Text>
@@ -34,36 +34,50 @@ function SleepGoal({ minimumHours, setMinimumHours, maximumHours, setMaximumHour
           />
         </View>
       </View>
+      <Text style={styles.guidelinesText}>
+        Guidelines
+      </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    height: 150
+    height: 300
   },
   title: {
     fontSize: 30,
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    textAlign: 'center'
   },
   goalContainer: {
     flex: 1,
     flexDirection: 'row',
+    marginTop: 20,
+    height: 100
   },
   hoursTitle: {
     color: '#FFFFFF',
-    fontSize: 20
+    fontSize: 20,
+    textAlign: 'center'
   },
   hoursContainer: {
     flexGrow: 1,
+    flex: 1,
+    alignItems: 'center',
   },
   hoursInput: {
-    backgroundColor: '#111111',
-    borderColor: '#FFFFFF',
-    borderWidth: 2,
+    backgroundColor: '#333333',
+    marginTop: 10,
+    borderRadius: 5,
     color: '#FFFFFF',
+    width: '50%',
     padding: 10,
-    fontSize: 16
+    fontSize: 50,
+    textAlign: 'center'
+  },
+  guidelinesText: {
+    color: '#FFFFFF'
   }
 })
 
