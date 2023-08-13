@@ -20,5 +20,5 @@ export const readSleepData = async () => {
     }
   });
 
-  console.log(result);
+  return result;
 };
