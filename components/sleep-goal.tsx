@@ -34,9 +34,6 @@ function SleepGoal({ minimumHours, setMinimumHours, maximumHours, setMaximumHour
           />
         </View>
       </View>
-      <Text style={styles.guidelinesText}>
-        Guidelines
-      </Text>
     </View>
   );
 }

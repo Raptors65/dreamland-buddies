@@ -4,4 +4,5 @@ export type RootStackParamList = {
   Home: undefined;
   'Buy Creatures': undefined;
   'Your Creatures': undefined;
+  Achievements: undefined;
 };
