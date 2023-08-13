@@ -28,6 +28,8 @@ import Creature from '../types/creature';
 import { NavigationContainer } from '@react-navigation/native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation-props';
+import { connect } from 'react-redux';
+import { AppDispatch } from '../lib/store';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>
 
@@ -222,7 +224,7 @@ function HomeScreen({ navigation }: Props): JSX.Element {
         maximumHours={maximumHours}
         setMaximumHours={setMaximumHours}
       />
-      <Pressable onPress={() => navigation.navigate('Buy Creatures', { creatures, setCreatures })}>
+      <Pressable onPress={() => navigation.navigate('Buy Creatures', { sleepPoints })}>
         <View style={styles.buyCreaturesView}>
           <Text style={styles.buttonText}>Buy Creatures</Text>
         </View>
@@ -265,4 +267,6 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HomeScreen;
+const HomeScreenContainer = connect((creatures: Creature[]) => ({ creatures }))(HomeScreen);
+
+export default HomeScreenContainer;
