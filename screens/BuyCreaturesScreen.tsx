@@ -8,6 +8,7 @@ import { connect, useDispatch } from 'react-redux';
 import { CreaturesState, buyCreature } from '../lib/creaturesReducer';
 import { AppDispatch } from '../lib/store';
 import rarityStyle from '../types/rarityStyle';
+import creatureImages from '../helpers/creatureImages';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Buy Creatures'> & {
   creatures: CreaturesState,
@@ -15,6 +16,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Buy Creatures'> & {
 };
 
 function BuyCreaturesScreen({ creatures, dispatch, route }: Props): JSX.Element {
+
   return (
     <>
       <Text style={styles.points}>Snooze Points: {creatures.sleepPoints.toLocaleString()}</Text>
@@ -23,12 +25,13 @@ function BuyCreaturesScreen({ creatures, dispatch, route }: Props): JSX.Element 
         nestedScrollEnabled
         renderItem={({ item, index }) => {
           const rarityLowercase = item.rarity.toLowerCase();
+
           return(
               <View style={styles.creatureContainer}>
                 <View style={styles.topCreatureContainer}>
                   <View>
                     <Text style={styles.creatureName}>{item.name}</Text>
-                    <Image style={styles.creatureImage} source={require('../assets/phoenix.png')} />
+                    <Image style={styles.creatureImage} source={creatureImages[item.name]} />
                   </View>
                   <View>
                     <Text style={styles.creatureInfo}>{item.cost} points</Text>

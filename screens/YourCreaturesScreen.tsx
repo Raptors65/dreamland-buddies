@@ -7,6 +7,7 @@ import { RootStackParamList } from '../types/navigation-props';
 import { connect, useDispatch } from 'react-redux';
 import { CreaturesState, buyCreature } from '../lib/creaturesReducer';
 import { AppDispatch } from '../lib/store';
+import creatureImages from '../helpers/creatureImages';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Buy Creatures'> & {
   creatures: CreaturesState,
@@ -25,7 +26,7 @@ function YourCreaturesScreen({ creatures, dispatch, route }: Props): JSX.Element
         contentContainerStyle={styles.creaturesContainer}
         renderItem={({ item, index }) => (
           <Pressable onPress={() => setCreatureSelected(index)}>
-            <ImageBackground style={styles.creatureImage} source={require('../assets/phoenix.png')}>
+            <ImageBackground style={styles.creatureImage} source={creatureImages[item.name]}>
               {creatureSelected === index && (
                 <View style={styles.creatureTextContainer}>
                   <Text style={styles.creatureName}>{item.name}</Text>

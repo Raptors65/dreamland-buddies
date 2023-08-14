@@ -7,6 +7,7 @@ import { RootStackParamList } from '../types/navigation-props';
 import { connect, useDispatch } from 'react-redux';
 import { CreaturesState, buyCreature } from '../lib/creaturesReducer';
 import { AppDispatch } from '../lib/store';
+import achievementImages from '../helpers/achievementImages';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Achievements'> & {
   creatures: CreaturesState,
@@ -51,7 +52,7 @@ const achievements = [
   },
   {
     name: 'Celestial Dreamer',
-    description: 'Befriend two celestial sleep buddies. Reach the highest echelons of dream mastery with the power of the ancient gods of sleep.',
+    description: 'Befriend a celestial sleep buddy. Reach the highest echelons of dream mastery with the power of the ancient gods of sleep.',
     rarity: 'Celestial'
   },
 ];
@@ -63,17 +64,17 @@ function AchievementsScreen({ creatures, dispatch, route }: Props): JSX.Element 
     <FlatList
       data={achievements}
       renderItem={({ item, index }) => (
-        creatures.creatures[index * 2].owned && creatures.creatures[index * 2 + 1].owned ? (
+        creatures.creatures[index * 2].owned && (index === 7 || creatures.creatures[index * 2 + 1].owned) ? (
           <View style={styles.achievementContainer}>
-            <Image style={styles.achievementImage} source={require('../assets/phoenix.png')} />
+            <Image style={styles.achievementImage} source={achievementImages[item.rarity]} />
             <View style={styles.achievementTextContainer}>
               <Text style={styles.achievementName}>{item.name}</Text>
               <Text style={styles.achievementDescription}>{item.description}</Text>
             </View>
           </View>
         ) : (
-          <View style={styles.achievementContainer}>
-            <Image style={styles.achievementImage} source={require('../assets/phoenix.png')} />
+          <View style={styles.lockedContainer}>
+            <Image style={styles.achievementImage} source={achievementImages[item.rarity]} />
             <View style={styles.achievementTextContainer}>
               <Text style={styles.lockedName}>{item.name}</Text>
               <Text style={styles.lockedDescription}>Not unlocked yet</Text>
@@ -111,16 +112,23 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
   lockedName: {
-    color: '#AAAAAA',
+    color: '#FFFFFF',
     fontSize: 18,
     flexShrink: 1,
     fontStyle: 'italic'
   },
   lockedDescription: {
-    color: '#AAAAAA',
+    color: '#FFFFFF',
     fontSize: 16,
     flexShrink: 1,
     fontStyle: 'italic',
+  },
+  lockedContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    padding: 10,
+    width: '100%',
+    opacity: 0.5
   }
 });
 
