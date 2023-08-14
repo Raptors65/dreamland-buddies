@@ -34,7 +34,7 @@ export default function calculateSleepPoints(sleepData: RecordResult<"SleepSessi
   }
 
   // TODO: remove (this is only for testing)
-  sleepPoints += 10000000
+  // sleepPoints += 10000000
 
   return sleepPoints;
 }
