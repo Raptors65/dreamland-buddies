@@ -145,10 +145,14 @@ export const creaturesSlice = createSlice({
     },
     setPoints: (state, action: PayloadAction<number>) => {
       state.sleepPoints = action.payload;
-    }
+    },
+    setCreatures: (state, action: PayloadAction<CreaturesState>) => {
+      state.creatures = action.payload.creatures;
+      state.sleepPoints = action.payload.sleepPoints;
+    },
   },
 });
 
-export const { buyCreature, setPoints } = creaturesSlice.actions;
+export const { buyCreature, setPoints, setCreatures } = creaturesSlice.actions;
 
 export default creaturesSlice.reducer;

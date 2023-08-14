@@ -3,9 +3,9 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 
 type SleepGoalProps = {
   minimumHours: number;
-  setMinimumHours: React.Dispatch<SetStateAction<number>>;
+  setMinimumHours: (newValue: number) => void;
   maximumHours: number;
-  setMaximumHours: React.Dispatch<SetStateAction<number>>;
+  setMaximumHours: (newValue: number) => void;
 };
 
 function SleepGoal({ minimumHours, setMinimumHours, maximumHours, setMaximumHours }: SleepGoalProps): JSX.Element {

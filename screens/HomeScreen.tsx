@@ -31,7 +31,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation-props';
 import { connect } from 'react-redux';
 import { AppDispatch } from '../lib/store';
-import { CreaturesState, setPoints } from '../lib/creaturesReducer';
+import { CreaturesState, setCreatures, setPoints } from '../lib/creaturesReducer';
 import calculateStreak from '../helpers/calculate-streak';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'> & {
@@ -81,6 +81,13 @@ function HomeScreen({ navigation, dispatch, creatures }: Props): JSX.Element {
         AsyncStorage.setItem('maximumHours', maximumHours.toString());
       }
     });
+    AsyncStorage.getItem('creatures').then((storedValue) => {
+      if (storedValue !== null) {
+        dispatch(setCreatures(JSON.parse(storedValue)));
+      } else {
+        AsyncStorage.setItem('creatures', JSON.stringify(creatures));
+      }
+    })
   }, []);
 
   useEffect(() => {
@@ -130,9 +137,9 @@ function HomeScreen({ navigation, dispatch, creatures }: Props): JSX.Element {
           </Pressable>
           <SleepGoal
             minimumHours={minimumHours}
-            setMinimumHours={setMinimumHours}
+            setMinimumHours={updateMinimumHours}
             maximumHours={maximumHours}
-            setMaximumHours={setMaximumHours}
+            setMaximumHours={updateMaximumHours}
           />
         </>
       ) : (
