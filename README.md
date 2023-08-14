@@ -1,8 +1,12 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+This is a [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+
+## Step 0 (for judges): Clone the repository and then run `npm install`
+
+Note that you also may need to open the android folder in Android Studio as per [this Stack Overflow answer](https://stackoverflow.com/questions/71247307/how-to-run-react-native-application-in-android-which-is-cloned-from-a-github-rep).
 
 ## Step 1: Start the Metro Server
 
