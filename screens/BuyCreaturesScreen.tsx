@@ -30,6 +30,7 @@ function BuyCreaturesScreen({ creatures, dispatch, route }: Props): JSX.Element 
               <View>
                 <Text style={styles.creatureInfo}>Cost: {item.cost} points</Text>
                 <Text style={styles.creatureInfo}>Rarity: {item.rarity}</Text>
+                <Text style={styles.creatureInfo}>Type: {item.type}</Text>
                 <Text style={styles.ownedInfo}>{item.owned ? 'Owned' : 'Not Owned'}</Text>
               </View>
             </View>
