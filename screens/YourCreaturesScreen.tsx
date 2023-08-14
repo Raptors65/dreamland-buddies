@@ -7,6 +7,7 @@ import { RootStackParamList } from '../types/navigation-props';
 import { connect, useDispatch } from 'react-redux';
 import { CreaturesState, buyCreature } from '../lib/creaturesReducer';
 import { AppDispatch } from '../lib/store';
+import rarityStyle from '../types/rarityStyle';
 import creatureImages from '../helpers/creatureImages';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Buy Creatures'> & {
@@ -30,6 +31,7 @@ function YourCreaturesScreen({ creatures, dispatch, route }: Props): JSX.Element
               {creatureSelected === index && (
                 <View style={styles.creatureTextContainer}>
                   <Text style={styles.creatureName}>{item.name}</Text>
+                  <Text style={rarityStyle[item.rarity.toLowerCase()]}>{item.rarity}</Text>
                   <Text style={styles.creatureText}>{Math.round((Date.now() - item.born) / 1000 / 60 / 60 / 24)} days old</Text>
                 </View>
               )}

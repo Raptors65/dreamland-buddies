@@ -23,10 +23,7 @@ function BuyCreaturesScreen({ creatures, dispatch, route }: Props): JSX.Element 
       <FlatList
         data={creatures.creatures}
         nestedScrollEnabled
-        renderItem={({ item, index }) => {
-          const rarityLowercase = item.rarity.toLowerCase();
-
-          return(
+        renderItem={({ item, index }) => (
               <View style={styles.creatureContainer}>
                 <View style={styles.topCreatureContainer}>
                   <View>
@@ -42,8 +39,7 @@ function BuyCreaturesScreen({ creatures, dispatch, route }: Props): JSX.Element 
                 </View>
                 {!item.owned && <Button disabled={item.cost > creatures.sleepPoints} title="Buy Creature" onPress={() => dispatch(buyCreature(index))} />}
               </View>
-          )
-        }}
+          )}
       />
     </>
   )
