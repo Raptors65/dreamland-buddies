@@ -146,7 +146,6 @@ const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: '#000000',
     color: '#FFFFFF',
-    flex: 1
   },
   sleepPointsContainer: {
     paddingVertical: 20,
