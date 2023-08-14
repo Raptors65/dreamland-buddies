@@ -31,9 +31,9 @@ function BuyCreaturesScreen({ creatures, dispatch, route }: Props): JSX.Element 
                     <Image style={styles.creatureImage} source={require('../assets/phoenix.png')} />
                   </View>
                   <View>
-                    <Text style={styles.creatureInfo}>Cost: {item.cost} points</Text>
-                    <Text style={rarityStyle[rarityLowercase]}>Rarity: {item.rarity}</Text>
-                    <Text style={styles.creatureInfo}>Type: {item.type}</Text>
+                    <Text style={styles.creatureInfo}>{item.cost} points</Text>
+                    <Text style={rarityStyle[rarityLowercase]}>{item.rarity}</Text>
+                    <Text style={styles.creatureInfo}>{item.type}</Text>
                     <Text style={styles.ownedInfo}>{item.owned ? 'Owned' : 'Not Owned'}</Text>
                   </View>
                 </View>
