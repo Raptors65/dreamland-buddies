@@ -7,6 +7,7 @@ import { RootStackParamList } from '../types/navigation-props';
 import { connect, useDispatch } from 'react-redux';
 import { CreaturesState, buyCreature } from '../lib/creaturesReducer';
 import { AppDispatch } from '../lib/store';
+import rarityStyle from '../types/rarityStyle';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Buy Creatures'> & {
   creatures: CreaturesState,
@@ -20,23 +21,26 @@ function BuyCreaturesScreen({ creatures, dispatch, route }: Props): JSX.Element 
       <FlatList
         data={creatures.creatures}
         nestedScrollEnabled
-        renderItem={({ item, index }) => (
-          <View style={styles.creatureContainer}>
-            <View style={styles.topCreatureContainer}>
-              <View>
-                <Text style={styles.creatureName}>{item.name}</Text>
-                <Image style={styles.creatureImage} source={require('../assets/phoenix.png')} />
+        renderItem={({ item, index }) => {
+          const rarityLowercase = item.rarity.toLowerCase();
+          return(
+              <View style={styles.creatureContainer}>
+                <View style={styles.topCreatureContainer}>
+                  <View>
+                    <Text style={styles.creatureName}>{item.name}</Text>
+                    <Image style={styles.creatureImage} source={require('../assets/phoenix.png')} />
+                  </View>
+                  <View>
+                    <Text style={styles.creatureInfo}>Cost: {item.cost} points</Text>
+                    <Text style={rarityStyle[rarityLowercase]}>Rarity: {item.rarity}</Text>
+                    <Text style={styles.creatureInfo}>Type: {item.type}</Text>
+                    <Text style={styles.ownedInfo}>{item.owned ? 'Owned' : 'Not Owned'}</Text>
+                  </View>
+                </View>
+                {!item.owned && <Button disabled={item.cost > creatures.sleepPoints} title="Buy Creature" onPress={() => dispatch(buyCreature(index))} />}
               </View>
-              <View>
-                <Text style={styles.creatureInfo}>Cost: {item.cost} points</Text>
-                <Text style={styles.creatureInfo}>Rarity: {item.rarity}</Text>
-                <Text style={styles.creatureInfo}>Type: {item.type}</Text>
-                <Text style={styles.ownedInfo}>{item.owned ? 'Owned' : 'Not Owned'}</Text>
-              </View>
-            </View>
-            {!item.owned && <Button disabled={item.cost > creatures.sleepPoints} title="Buy Creature" onPress={() => dispatch(buyCreature(index))} />}
-          </View>
-        )}
+          )
+        }}
       />
     </>
   )
