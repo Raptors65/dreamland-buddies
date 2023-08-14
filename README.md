@@ -8,6 +8,8 @@ This is a [**React Native**](https://reactnative.dev) project, bootstrapped usin
 
 Note that you also may need to open the android folder in Android Studio as per [this Stack Overflow answer](https://stackoverflow.com/questions/71247307/how-to-run-react-native-application-in-android-which-is-cloned-from-a-github-rep).
 
+**Alternatively, you can install the APK [here](https://drive.google.com/file/d/1_EsaZZcpmCXLn0qp7v9TprMrQHU_5Ca0/view?usp=sharing).**
+
 ## Step 1: Start the Metro Server
 
 First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
