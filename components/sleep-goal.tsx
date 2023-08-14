@@ -49,7 +49,7 @@ function SleepGoal({ minimumHours, setMinimumHours, maximumHours, setMaximumHour
 
 const styles = StyleSheet.create({
   container: {
-    height: 420
+    height: 450
   },
   title: {
     fontSize: 30,
