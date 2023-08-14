@@ -113,14 +113,14 @@ function HomeScreen({ navigation, dispatch, creatures }: Props): JSX.Element {
             <Text style={styles.streakTitle}>Current Streak</Text>
             <Text style={{...styles.streak, color: streakColor }}>{streak.toLocaleString()}</Text>
           </View>
-          <Pressable onPress={() => navigation.navigate('Buy Creatures')}>
+          <Pressable onPress={() => navigation.navigate('Buy Buddies')}>
             <View style={styles.buyCreaturesView}>
-              <Text style={styles.buttonText}>Buy Creatures</Text>
+              <Text style={styles.buttonText}>Buy Buddies</Text>
             </View>
           </Pressable>
-          <Pressable onPress={() => navigation.navigate('Your Creatures')}>
+          <Pressable onPress={() => navigation.navigate('Your Buddies')}>
             <View style={styles.yourCreaturesView}>
-              <Text style={styles.buttonText}>Your Creatures</Text>
+              <Text style={styles.buttonText}>Your Buddies</Text>
             </View>
           </Pressable>
           <Pressable onPress={() => navigation.navigate('Achievements')}>

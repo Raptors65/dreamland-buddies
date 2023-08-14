@@ -42,8 +42,8 @@ function App(): JSX.Element {
         <StatusBar backgroundColor={Theme.colors.card} barStyle="light-content" />
         <Stack.Navigator>
           <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Buy Creatures" component={BuyCreaturesScreen} />
-          <Stack.Screen name="Your Creatures" component={YourCreaturesScreen} />
+          <Stack.Screen name="Buy Buddies" component={BuyCreaturesScreen} />
+          <Stack.Screen name="Your Buddies" component={YourCreaturesScreen} />
           <Stack.Screen name="Achievements" component={AchievementsScreenContainer} />
         </Stack.Navigator>
       </NavigationContainer>
